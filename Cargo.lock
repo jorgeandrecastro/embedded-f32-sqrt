@@ -4,4 +4,4 @@ version = 4
 
 [[package]]
 name = "embedded-f32-sqrt"
-version = "0.1.0"
+version = "0.1.1"

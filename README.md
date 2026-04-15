@@ -16,7 +16,7 @@ Racine carrée `f32` par **Newton-Raphson** pour systèmes embarqués `no_std`.
 
 ```toml
 [dependencies]
-embedded-f32-sqrt = "0.1"
+embedded-f32-sqrt = "0.1.1"
 ```
 
 ```rust
