@@ -1,38 +1,45 @@
 # embedded-f32-sqrt
+Racine carrée f32 par Newton-Raphson optimisée pour les systèmes embarqués no_std.
 
-[![Crates.io](https://img.shields.io/crates/v/embedded-f32-sqrt)](https://crates.io/crates/embedded-f32-sqrt)
-[![Docs.rs](https://docs.rs/embedded-f32-sqrt/badge.svg)](https://docs.rs/embedded-f32-sqrt)
-[![License: GPL-2.0-or-later](https://img.shields.io/badge/license-GPL--2.0--or--later-blue)](LICENSE)
-![no_std](https://img.shields.io/badge/no__std-✓-green)
+Points forts
+Zéro dépendance  Pas de libm, pas de micromath, pas de bibliothèque C.
 
-Racine carrée `f32` par **Newton-Raphson** pour systèmes embarqués `no_std`.
+Sécurité maximale  #![forbid(unsafe_code)] et gestion robuste via Result.
 
-- Zéro dépendance — pas de `libm`, pas de `micromath`
-- `#![forbid(unsafe_code)]`
-- Fonctionne sans FPU (Cortex-M0+, RISC-V)
-- Si FPU présente, LLVM émet `VSQRT` automatiquement
+Portabilité totale :
 
-## Utilisation
+Cibles sans FPU (Cortex-M0+, RISC-V) : Implémentation logicielle déterministe.
 
-```toml
+Cibles avec FPU (Cortex-M4F, M33, M7) : Exploite nativement les unités de calcul flottant.
+
+Précision : Erreur relative < 1 ULP (Unit in the Last Place) après 5 itérations.
+
+Utilisation
+Ini, TOML
 [dependencies]
-embedded-f32-sqrt = "0.1.1"
-```
-
-```rust
+embedded-f32-sqrt = "0.1.2"
+````rust
 use embedded_f32_sqrt::sqrt;
 
-sqrt(9.0).unwrap();   // Ok(3.0)
-sqrt(2.0).unwrap();   // Ok(1.4142135)
-sqrt(-1.0);           // Err(NegativeInput)
-```
+fn main() {
+    let val = 9.0;
+    match sqrt(val) {
+        Ok(res) => println!("sqrt({}) = {}", val, res),
+        Err(_)  => println!("Erreur : valeur négative !"),
+    }
+}
 
-## Algorithme
+````
+Algorithme
+L'implémentation repose sur la méthode de Newton-Raphson, une approche itérative qui double le nombre de bits de précision à chaque étape.
 
-Estimation initiale par décalage de bits sur l'exposant IEEE 754, puis 5 itérations Newton-Raphson `r = (r + x/r) / 2`. Précision : erreur relative < 1 ULP f32.
+Estimation initiale : Manipulation directe des bits de l'exposant IEEE 754 pour obtenir une première approximation à ~3% de la valeur réelle.
 
-## Licence
+Raffinement : 5 itérations de la formule r = 0.5 * (r + x / r) pour saturer la précision du type f32.
 
+Sur les architectures récentes, LLVM optimise cette boucle ou émet directement l'instruction machine VSQRT si le matériel le permet.
+
+Licence
 GPL-2.0-or-later
 
 Copyright (C) 2026 Jorge Andre Castro.
