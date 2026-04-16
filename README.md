@@ -1,6 +1,10 @@
 # embedded-f32-sqrt
 Racine carrée f32 par Newton-Raphson optimisée pour les systèmes embarqués no_std.
 
+# Update Version 0.1.4
+ Mise à jour du Readme rien ne change pour la logique et implementation pour la version 0.1.4  , le Choix de #![forbid(unsafe_code)] pour plus de fiabilité, et opt-level = 3 pour une rapiditée maximale.
+
+
 Points forts
 Zéro dépendance  Pas de libm, pas de micromath, pas de bibliothèque C.
 
@@ -17,7 +21,7 @@ Précision : Erreur relative < 1 ULP (Unit in the Last Place) après 5 itératio
 Utilisation
 Ini, TOML
 [dependencies]
-embedded-f32-sqrt = "0.1.3"
+embedded-f32-sqrt = "0.1.4"
 ````rust
 use embedded_f32_sqrt::sqrt;
 
@@ -156,7 +160,7 @@ async fn main(spawner: Spawner) {
 
 
 
-Licence
+ # Licence
 GPL-2.0-or-later
 
 Copyright (C) 2026 Jorge Andre Castro.
