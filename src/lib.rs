@@ -34,13 +34,21 @@ pub struct NegativeInput;
 ///
 /// Retourne `Err(NegativeInput)` si `x < 0.0`.
 pub fn sqrt(x: f32) -> Result<f32, NegativeInput> {
-    if x < 0.0 {
-        return Err(NegativeInput);
-    }
-    if x == 0.0 {
-        return Ok(0.0);
+    if x.is_nan() {
+    return Ok(f32::NAN);
     }
 
+    if x.is_infinite() {
+    return Ok(f32::INFINITY);
+    }
+
+    if x < 0.0 {
+    return Err(NegativeInput);
+    }
+
+    if x == 0.0 {
+    return Ok(0.0);
+    }
     // Estimation initiale par manipulation d'exposant IEEE 754
     let mut r = f32::from_bits(((x.to_bits() >> 1) + 0x1FBB_4F2E) & 0x7FFF_FFFF);
 
