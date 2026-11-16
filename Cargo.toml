@@ -1,10 +1,10 @@
 [package]
 name = "embedded-f32-sqrt"
-version = "0.2.0"
+version = "0.2.1"
 edition = "2024"
 authors = ["Jorge Andre Castro <georgeandrec@gmail.com>"]
 license = "GPL-2.0-or-later"
-description = "Racine carrée f32 Newton-Raphson pour no_std embarqué,testée sur Cortex-M33/M4F"
+description = "Newton–Raphson f32 square root for no_std embedded systems, tested on Cortex-M33/M4F"
 repository = "https://github.com/jorgeandrecastro/embedded-f32-sqrt"
 documentation = "https://docs.rs/embedded-f32-sqrt"
 readme = "README.md"
