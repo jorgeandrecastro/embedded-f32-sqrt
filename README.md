@@ -1,20 +1,9 @@
 # embedded-f32-sqrt
 An optimized Newton–Raphson square root for `f32` on `no_std` embedded systems.
 
-[![Crates.io](https://img.shields.io/crates/v/embedded-f32-sqrt.svg)](https://crates.io/crates/embedded-f32-sqrt)
-[![License](https://img.shields.io/crates/l/embedded-f32-sqrt.svg)](https://github.com/JorgeAndresCastro/embedded-f32-sqrt/blob/main/LICENSE)
+[![Crates.io](https://img.shields.io/crates/v/embedded-f32-sqrt.svg)](https://
 [![Docs.rs](https://docs.rs/embedded-f32-sqrt/badge.svg)](https://docs.rs/embedded-f32-sqrt/)
-
-# Update Version 0.2.1
-Documentation translated into English; no changes to the logic or implementation.
-
-# Update Version 0.2.0
-NaN and infinity handling for improved robustness.
-
-
-# Update Version 0.1.4
-README update. No changes were made to the logic or implementation in version 0.1.4. `#![forbid(unsafe_code)]` was chosen for greater reliability, and `opt-level = 3` for maximum speed.
-
+[![License: MIT OR Apache-2.0](https://img.shields.io/badge/License-MIT%20or%20Apache--2.0-blue.svg)](https://opensource.org/licenses/MIT)
 
 **Highlights**
 Zero dependencies: no `libm`, no `micromath`, and no C library.
@@ -32,7 +21,7 @@ Precision: relative error < 1 ULP (Unit in the Last Place) after 5 iterations.
 **Usage**
 ````
 [dependencies]
-embedded-f32-sqrt = "0.2.0"
+embedded-f32-sqrt = "1.0.0"
 ````
 
 ----
@@ -183,7 +172,16 @@ async fn main(spawner: Spawner) {
 ```
 ----
 
-# Licence
-GPL-2.0-or-later
+## 🛡️ License
 
-Copyright (C) 2026 Jorge Andre Castro.
+Licensed under either of:
+
+    MIT license (http://opensource.org/licenses/MIT)
+
+    Apache License, Version 2.0 (http://www.apache.org/licenses/LICENSE-2.0)
+
+at your option.
+
+## 🦅 About
+
+Developed by Jorge Andre Castro.
